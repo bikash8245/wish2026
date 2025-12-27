@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>শুভ নববর্ষ ২০২৬</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@500;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- বেসিক সেটআপ --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            /* --- নতুন অ্যানিমেটেড রঙ্গোলি ব্যাকগ্রাউন্ড --- */
+            background-color: #2b0000; /* মূল গাঢ় লাল রঙ */
+            /* জটিল রঙ্গোলি প্যাটার্ন তৈরি করতে একাধিক গ্রেডিয়েন্ট ব্যবহার */
+            background-image: 
+                radial-gradient(circle at 50% 50%, #ffb700 10%, transparent 12%), /* মাঝের সোনালী বিন্দু */
+                radial-gradient(circle at 0% 0%, rgba(255, 215, 0, 0.2) 20%, transparent 22%), /* কোণার হালকা বৃত্ত */
+                radial-gradient(circle at 100% 100%, rgba(255, 215, 0, 0.2) 20%, transparent 22%),
+                linear-gradient(45deg, transparent 48%, #600000 48%, #600000 52%, transparent 52%), /* কোণাকুণি লাইন */
+                linear-gradient(-45deg, transparent 48%, #600000 48%, #600000 52%, transparent 52%); /* বিপরীত কোণাকুণি লাইন */
+            
+            background-size: 60px 60px; /* প্যাটার্নের আকার */
+            
+            /* ব্যাকগ্রাউন্ড অ্যানিমেশন */
+            animation: rangoliFlow 15s linear infinite;
+            
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* ব্যাকগ্রাউন্ড নড়াচড়ার অ্যানিমেশন কি-ফ্রেম */
+        @keyframes rangoliFlow {
+            0% { background-position: 0 0; }
+            100% { background-position: 60px 60px; } /* background-size এর সমান সরাতে হবে যাতে লুপ বোঝা না যায় */
+        }
+
+        /* --- ইনপুট সেকশন --- */
+        #input-container {
+            /* ব্যাকগ্রাউন্ড স্পষ্ট করার জন্য একটু গাঢ় এবং ব্লার বাড়ানো হলো */
+            background: rgba(40, 0, 0, 0.7); 
+            padding: 50px 40px;
+            border-radius: 20px;
+            border: 2px solid #c5a028;
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(15px); /* গ্লাস ইফেক্ট */
+            text-align: center;
+            color: #fff;
+            position: relative;
+            z-index: 100;
+            transition: all 0.5s ease;
+        }
+
+        #input-container h2 {
+            margin-bottom: 25px;
+            color: #ffd700;
+            font-family: 'Hind Siliguri', sans-serif;
+            font-size: 2rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 2px solid #c5a028;
+            border-radius: 50px;
+            background: #fff;
+            font-size: 18px;
+            text-align: center;
+            outline: none;
+            color: #4a0000;
+            font-weight: bold;
+            font-family: 'Hind Siliguri', sans-serif;
+        }
+
+        button {
+            padding: 12px 40px;
+            border: none;
+            border-radius: 50px;
+            background: linear-gradient(90deg, #ff8c00, #ff0055);
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            font-family: 'Hind Siliguri', sans-serif;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(255, 69, 0, 0.4);
+            transition: transform 0.2s;
+        }
+        button:hover { transform: scale(1.05); }
+
+        /* --- ব্যানার সেকশন --- */
+        #banner-container {
+            display: none;
+            position: relative;
+            width: 95%;
+            max-width: 800px;
+            padding: 80px 20px;
+            text-align: center;
+            color: #fff;
+            border-radius: 30px;
+            /* ব্যানারের নিজস্ব সলিড ব্যাকগ্রাউন্ড যাতে মূল ব্যাকগ্রাউন্ডের উপরে ফুটে ওঠে */
+            background: radial-gradient(circle at center, #900000 10%, #2b0000 90%);
+            border: 4px solid #c5a028;
+            box-shadow: 0 0 80px rgba(255, 165, 0, 0.4);
+            overflow: hidden;
+            z-index: 50;
+        }
+
+        /* ব্যানারের ভিতরের হালকা ঘূর্ণায়মান আলো */
+        #banner-container::before {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%; width: 200%; height: 200%;
+            background: conic-gradient(from 0deg, transparent 0deg, rgba(255, 215, 0, 0.1) 60deg, transparent 120deg);
+            animation: slowSpin 10s linear infinite;
+        }
+        @keyframes slowSpin { 100% { transform: rotate(360deg); } }
+
+        /* প্রদীপ */
+        .diya {
+            position: absolute;
+            bottom: 25px;
+            width: 50px;
+            height: 25px;
+            background: #500000;
+            border-radius: 0 0 50px 50px;
+            border: 2px solid #ffd700;
+            z-index: 10;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.5);
+        }
+        .diya::after {
+            content: '';
+            position: absolute;
+            top: -20px; left: 50%;
+            transform: translateX(-50%);
+            width: 12px; height: 20px;
+            background: radial-gradient(#ffff00, #ff4500);
+            border-radius: 50% 50% 20% 20%;
+            filter: blur(2px);
+            animation: flicker 0.4s infinite alternate;
+        }
+        .diya-left { left: 40px; }
+        .diya-right { right: 40px; }
+        @keyframes flicker { 0% { transform: translateX(-50%) scale(1); opacity: 1; } 100% { transform: translateX(-50%) scale(0.9); opacity: 0.8; } }
+
+        /* --- টেক্সট স্টাইল --- */
+        .content-box { position: relative; z-index: 5; }
+
+        .gold-text {
+            display: block;
+            background: linear-gradient(to bottom, #fff, #ffd700, #ffcc00);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            filter: drop-shadow(0 4px 2px rgba(0,0,0,0.4));
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .title-small { font-size: 2.5rem; font-weight: 900; letter-spacing: 2px; }
+        .year-big { font-size: 7rem; line-height: 1; font-weight: 900; margin: 10px 0; text-shadow: 0 0 30px rgba(255, 215, 0, 0.4); }
+        
+        .name-text {
+            font-size: 4.5rem;
+            font-weight: 900;
+            color: #fff;
+            -webkit-text-stroke: 2px #800000;
+            text-transform: uppercase;
+            margin-top: 10px;
+        }
+
+        /* স্পেশাল মেসেজ স্টাইল */
+        .special-wish {
+            font-family: 'Hind Siliguri', sans-serif;
+            font-size: 1.8rem;
+            color: #ffeb3b; /* উজ্জ্বল হলুদ */
+            margin-top: 30px;
+            font-weight: 600;
+            text-shadow: 2px 2px 4px #000;
+            background: none;
+            -webkit-background-clip: unset;
+            opacity: 0;
+            transform: scale(0.8);
+        }
+
+        /* অ্যানিমেশন */
+        @keyframes revealUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes popInWish {
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        /* মোবাইল রেসপন্সিভ */
+        @media (max-width: 600px) {
+            .title-small { font-size: 1.8rem; }
+            .year-big { font-size: 5rem; }
+            .name-text { font-size: 3rem; }
+            .special-wish { font-size: 1.4rem; padding: 0 10px; }
+            #banner-container { padding: 60px 15px; }
+            body { background-size: 40px 40px; } /* মোবাইলে প্যাটার্ন একটু ছোট */
+        }
+    </style>
+</head>
+<body>
+
+    <div id="input-container">
+        <h2>তোমার নাম লেখো</h2>
+        <input type="text" id="nameInput" placeholder="এখানে নাম লেখো (যেমন: Bikash)">
+        <br>
+        <button onclick="generateBanner()">তৈরি করুন</button>
+    </div>
+
+    <div id="banner-container">
+        <div class="diya diya-left"></div>
+        <div class="diya diya-right"></div>
+
+        <div class="content-box">
+            <span class="gold-text title-small">Happy New Year</span>
+            <span class="gold-text year-big">2026</span>
+            
+            <span id="userNameDisplay" class="gold-text name-text"></span>
+            
+            <div class="special-wish">
+                "তোমার দিন ভালো না যাক,<br>খুব ভালো যাক!"
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function generateBanner() {
+            const nameInput = document.getElementById('nameInput');
+            const nameVal = nameInput.value;
+            
+            if(nameVal.trim() === "") {
+                alert("দয়া করে তোমার নাম লেখো!");
+                return;
+            }
+
+            document.getElementById('userNameDisplay').textContent = nameVal;
+
+            const inputDiv = document.getElementById('input-container');
+            inputDiv.style.opacity = '0';
+            inputDiv.style.transform = 'scale(0.8)';
+
+            setTimeout(() => {
+                inputDiv.style.display = 'none';
+                const banner = document.getElementById('banner-container');
+                banner.style.display = 'block';
+
+                const anim1 = document.querySelector('.title-small');
+                const anim2 = document.querySelector('.year-big');
+                const anim3 = document.querySelector('.name-text');
+                const anim4 = document.querySelector('.special-wish');
+
+                anim1.style.animation = "revealUp 1s ease forwards";
+                anim2.style.animation = "revealUp 1s ease forwards 0.3s";
+                anim3.style.animation = "revealUp 1s ease forwards 0.6s";
+                anim4.style.animation = "popInWish 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards 1.2s";
+
+            }, 500);
+        }
+
+        document.getElementById("nameInput").addEventListener("keyup", function(e) {
+            if (e.key === "Enter") generateBanner();
+        });
+    </script>
+</body>
+</html>
